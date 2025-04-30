@@ -32,7 +32,7 @@ start_pos = [int(screen_width * 0.9), int(screen_height * 0.9)]
 car_pos = start_pos.copy()
 car_angle = 0
 car_speed = 0
-max_speed = 2
+max_speed = 3
 score = 0
 
 # Hand tracking globals
@@ -227,6 +227,7 @@ while running:
     if frame is not None:
         frame = cv2.resize(frame, (int(screen_width / 4), int(screen_height / 4)))
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame = cv2.flip(frame, 1)
         frame_surface = pygame.surfarray.make_surface(np.rot90(frame))
         screen.blit(frame_surface, (screen_width - frame_surface.get_width(), 0))
 
